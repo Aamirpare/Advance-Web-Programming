@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+ .error{color: #f00;}
+</style>
+<%- include("./partials/head"); %>
+
+    <body>
+        <div class="header">
+            <%- include("./partials/header"); %>
+        </div>
+        <div class="page">
+            
+            <% if(message.length > 3 || message !== undefined) { %>
+                <h2 class="error"><%= message %></h2>
+            <%} else{%>
+                <h2 class="error">404 Resouse not found</h2>
+            <% } %>
+            
+        </div>
+        <div class="footer">
+           <%- include("./partials/footer") %>
+        </div>
+    </body>
+
+</html>

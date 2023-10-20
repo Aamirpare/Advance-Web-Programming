@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/head"); %>
+    <style>
+        .page{
+            margin:auto;
+            width: 60%;
+        }
+        .popular-brands{
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+        .popular-brands > ul{
+            list-style-type: none;
+            width: inherit;
+        }
+        .popular-brands > ul > li{
+            background-color: rgb(157, 160, 163);
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .popular-brands > ul > li a{
+            text-decoration: none;
+            text-transform: capitalize;
+            font-size: 1.5rem;
+            color:#fff;
+        }
+        h2.alert{
+            color: crimson;
+        }
+    </style>
+
+    <body>
+        <div class="header">
+            <%- include("./partials/header"); %>
+        </div>
+        <div class="page">
+
+               <% const title="Vehicle@Park Development Server"; %>
+                <h1>
+                    <%= title %>
+                </h1>
+                <div class="popular-brands">
+                    <% if(brands.length > 0) { %>
+                    <ul>
+                        <% brands.forEach(brand=> {%>
+                            <li>
+                                <a href="/vehicles/<%= brand.id %>"> <%=`${brand.name} ${brand.model} ${brand.variant.toUpperCase()}` %> </a>
+                            </li>
+                        <%})%>
+                    </ul>
+                    <% } else {%>
+                        <div class="empty">
+                            <h2 class="alert">There are no records in the database.</h2>
+                            <a href="/vehicles">Click to create</a>
+                        </div>
+                    <%}%>
+                </div>
+        </div>
+        <div class="footer">
+            <%- include("./partials/footer") %>
+        </div>
+    </body>
+
+</html>

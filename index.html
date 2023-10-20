@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicles - All Vehicles</title>
+    <style>
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .brands-list{
+            list-style-type: none;
+        }
+        .brands-list li{
+            background:rgba(100, 100, 120, 0.5);
+            padding: 5px 15px;
+            margin-bottom: 10px;
+        }
+        .brands-list li a{
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the brands</h1>
+    <div class="container">
+        <ul class="brands-list">
+
+        </ul>
+    </div>
+    <script>
+        const port  = window.location.host.split(":")[1];
+        const endpoint = `http://localhost:${port}/vehicles`;
+        generateBrands = async () => {
+            const brands = await fetch(endpoint).then(d => d.json());
+            let html = "";
+            brands.forEach(brand => {
+                html += `<li><a>${brand.name}</a></li>`;
+            });
+            const brandsList = document.querySelector(".brands-list");
+            brandsList.innerHTML = html; 
+        }
+        generateBrands();
+    </script>
+</body>
+</html>

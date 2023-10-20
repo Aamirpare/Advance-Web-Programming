@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/head"); %>
+    <style>
+        .page{
+            margin:auto;
+            width: 60%;
+        }
+        .popular-brands{
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+        form.brands{
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+        }
+        form.brands > input{
+            padding: 13px;
+            margin-bottom: 10px;
+            border: 0.09rem solid #999;
+            border-radius: 6px;
+        }
+        form.brands > input[type="submit"]{
+            width:80px;
+            cursor: pointer;
+        }
+        form.brands > input[type="submit"]:hover{
+            box-shadow: 1px 2px 6px rgba(0,0,0,0.5);
+        }
+        
+    </style>
+
+    <body>
+        <div class="header">
+            <%- include("./partials/header"); %>
+        </div>
+        <div class="page">
+
+            <% const title="Add New Brand"; %>
+                <h1>
+                    <%= title %>
+                </h1>
+                <div class="popular-brands">
+                    <form class="brands" action="/vehicles" method="post">
+                        <Label>Name:</Label><input name="name" type="text">
+                        <Label>Make:</Label><input name="make" type="text">
+                        <Label>Model:</Label><input name="model" type="text">
+                        <Label>Variant:</Label><input name="variant" type="text">
+                        <input type="submit" value="Save">
+                    </form>
+                </div>
+        </div>
+        <div class="footer">
+            <%- include("./partials/footer") %>
+        </div>
+    </body>
+
+</html>
